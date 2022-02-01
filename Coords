@@ -1,0 +1,42 @@
+class CoordValue:
+
+
+    def __init__(self, name):
+        self.__name = name
+
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.__name]
+
+    def __set__(self, instance, value):
+        instance.__dict__[self.__name] = value
+
+    def __delete__(self, obj):
+        del self.__value
+
+
+
+
+
+
+class Point:
+    coordX = CoordValue('coordX') # дескриптор
+    coordY = CoordValue('coordY')
+
+    x = 1
+    y = 1
+  
+    def __init__(self, x, y):
+        self.coordX = x
+        self.coordY = y
+   
+    
+
+    
+
+   
+pt = Point(5, 10)
+pt1 = Point(10, 20)
+print(pt.coordX, pt.coordY)
+print(pt.getCoords())
+  
